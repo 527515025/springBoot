@@ -15,5 +15,6 @@
 .classpath
 # IDEA ignore
 .idea
+.class
 
 
