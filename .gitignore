@@ -16,5 +16,5 @@
 # IDEA ignore
 .idea
 .class
-
+*.class
 
