@@ -15,7 +15,7 @@
     </parent>
 
     <properties>
-        <start-class>com.us.WebApplication</start-class>
+        <start-class>com.us.Application</start-class>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
     </properties>
@@ -39,6 +39,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+
         <!-- 引入Web模块 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -51,11 +52,12 @@
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
 
+        <!-- 引入security模块 -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-messaging</artifactId>
-            <version>4.2.3.RELEASE</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+
     </dependencies>
 
 

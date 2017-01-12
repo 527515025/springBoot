@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class WebSocketService {
+
     @Autowired
+    //使用SimpMessagingTemplate 向浏览器发送消息
     private SimpMessagingTemplate template;
 
     public void sendMessage() throws Exception{
