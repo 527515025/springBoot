@@ -15,7 +15,7 @@
     </parent>
 
     <properties>
-        <start-class>com.us.WebApplication</start-class>
+        <start-class>com.us.Application</start-class>
 
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
