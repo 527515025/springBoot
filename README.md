@@ -10,4 +10,9 @@
 
 三部分代码有交合。
 
+##springboot-Cache
+包含两部分代码
+
+第一部分是 博客 springboot的缓存技术 地址： http://blog.csdn.net/u012373815/article/details/54564076  
+第二部分是 博客 springboot缓存篇（二）－redis 做缓存 地址：http://blog.csdn.net/u012373815/article/details/54572687
 ##未完待续。。。
