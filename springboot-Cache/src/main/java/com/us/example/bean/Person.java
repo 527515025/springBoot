@@ -3,13 +3,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * Created by yangyibo on 17/1/13.
  */
 @Entity
 @Table(name = "Person")
-public class Person {
+public class Person implements Serializable {
+
+    private static final long serialVersionUID = 133938246231808718L;
+
     @Id
     @GeneratedValue
     private Long id;

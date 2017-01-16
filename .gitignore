@@ -17,4 +17,4 @@
 .idea
 .class
 *.class
-
+!application.properties
