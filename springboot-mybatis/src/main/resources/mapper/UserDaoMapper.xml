@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.us.example.dao.UserDao">
+	<resultMap id="userMap" type="com.us.example.bean.User">
+		<id property="id" column="ID" />
+		<result property="name" column="NAME" />
+		<result property="password" column="PASSWORD" />
+		<result property="username" column="USERNAME" />
+		<result property="divisionId" column="DIVISION_ID" />
+		<result property="email" column="EMAIL" />
+		<result property="gender" column="GENDER" />
+		<result property="mobilephone" column="MOBILEPHONE" />
+		<result property="telephone" column="TELEPHONE" />
+		<result property="userType" column="USER_TYPE" />
+		<result property="createBy" column="CREATE_BY" />
+		<result property="createTime" column="CREATE_TIME" />
+		<result property="updateBy" column="UPDATE_BY" />
+		<result property="updateTime" column="UPDATE_TIME" />
+		<result property="disabled" column="DISABLED" />
+		<result property="theme" column="THEME" />
+		<result property="isLdap" column="IS_LDAP" />
+
+	</resultMap>
+
+	<sql id="queryCondition">
+		<where>
+			<if test="id != null and id != ''">
+				and ID = #{id}
+			</if>
+			<if test="name != null and name != ''">
+				and NAME = #{name}
+			</if>
+			<if test="password != null and password != ''">
+				and PASSWORD = #{password}
+			</if>
+			<if test="username != null and username != ''">
+				and USERNAME = #{username}
+			</if>
+			<if test="divisionId != null and divisionId != ''">
+				and DIVISION_ID = #{divisionId}
+			</if>
+			<if test="email != null and email != ''">
+				and EMAIL = #{email}
+			</if>
+			<if test="gender != null and gender != ''">
+				and GENDER = #{gender}
+			</if>
+			<if test="mobilephone != null and mobilephone != ''">
+				and MOBILEPHONE = #{mobilephone}
+			</if>
+			<if test="telephone != null and telephone != ''">
+				and TELEPHONE = #{telephone}
+			</if>
+			<if test="userType != null and userType != ''">
+				and USER_TYPE = #{userType}
+			</if>
+			<if test="disabled != null and disabled != ''">
+				and DISABLED = #{disabled}
+			</if>
+			<if test="theme != null and theme != ''">
+				and THEME = #{theme}
+			</if>
+			<if test="keywords != null and keywords != ''">
+				and (name like CONCAT('%', #{keywords},'%') OR username
+				like CONCAT('%', #{keywords},'%')
+				OR telephone like CONCAT('%', #{keywords},'%') OR email like
+				CONCAT('%', #{keywords},'%') )
+			</if>
+
+		</where>
+	</sql>
+	<select id="getList" parameterType="map" resultMap="userMap">
+		SELECT * FROM sec_user
+		<include refid="queryCondition" />
+		order by create_time desc
+	</select>
+</mapper>
