@@ -3,10 +3,10 @@
 /bin
 */target/*
 /logs
-/out
+*/out/
 
 # filter config files, except .gitignore
-.*
+*.MF
 !.gitignore
 *.iml
 *.exe
