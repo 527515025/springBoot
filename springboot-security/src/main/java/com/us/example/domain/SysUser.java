@@ -1,28 +1,23 @@
 package com.us.example.domain;
 
-
-import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by yangyibo on 17/1/17.
  */
 
-@Entity
-@Table(name = "Sys_User")
 public class SysUser { //用户实体实现UserDetails接口,我门的用户实体即位 security 所使用的用户
-
-    @Id
-    @GeneratedValue
-    private Long id;
+    private Integer id;
     private String username;
     private String password;
-    private Integer role_id;
 
-    public Long getId() {
+    private List<SysRole> roles;
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -42,13 +37,12 @@ public class SysUser { //用户实体实现UserDetails接口,我门的用户实�
         this.password = password;
     }
 
-
-    public Integer getRole_id() {
-        return role_id;
+    public List<SysRole> getRoles() {
+        return roles;
     }
 
-    public void setRole_id(Integer role_id) {
-        this.role_id = role_id;
+    public void setRoles(List<SysRole> roles) {
+        this.roles = roles;
     }
 
 }
