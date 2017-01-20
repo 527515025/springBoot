@@ -6,7 +6,7 @@ import java.util.List;
  * Created by yangyibo on 17/1/17.
  */
 
-public class SysUser { //用户实体实现UserDetails接口,我门的用户实体即位 security 所使用的用户
+public class SysUser {
     private Integer id;
     private String username;
     private String password;
