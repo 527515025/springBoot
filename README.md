@@ -1,4 +1,9 @@
 ##springboot-SpringSecurity  
+是  博客 springboot+mybatis＋SpringSecurity 实现用户角色数据库管理   地址：http://blog.csdn.net/u012373815/article/details/54632176
+
+##springboot-Security  
+
+是  博客 springBoot+springSecurity 数据库动态管理用户、角色、权限（二）   地址：http://blog.csdn.net/u012373815/article/details/54633046
 
 ##springboot-WebSocket  
 包含三部分代码，
@@ -14,5 +19,8 @@
 包含两部分代码
 
 第一部分是 博客 springboot的缓存技术 地址： http://blog.csdn.net/u012373815/article/details/54564076  
+
 第二部分是 博客 springboot缓存篇（二）－redis 做缓存 地址：http://blog.csdn.net/u012373815/article/details/54572687
+
+
 ##未完待续。。。
