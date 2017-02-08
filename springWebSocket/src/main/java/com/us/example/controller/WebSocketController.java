@@ -50,6 +50,7 @@ public class WebSocketController {
 
         /**
          * 此处是一段硬编码。如果发送人是wyf 则发送给 wisely 如果发送人是wisely 就发送给 wyf。
+         * 通过当前用户,然后查找消息,如果查找到未读消息,则发送给当前用户。
          */
         if (principal.getName().equals("wyf")) {
             //通过convertAndSendToUser 向用户发送信息,
