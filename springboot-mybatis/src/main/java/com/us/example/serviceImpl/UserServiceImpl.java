@@ -4,6 +4,7 @@ package com.us.example.serviceImpl;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.us.example.dao.UserDao;
@@ -28,7 +29,14 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     public Object getList(Map<String, Object> map) {
+        printName();
         return userDao.getList(map);
+    }
+
+    //每一秒调用一次  -- 用于测试
+    @Scheduled(cron = "0/1 * *  * * ?")
+    public  void printName() {
+        System.out.println("my name is yang ");
     }
 
 }
