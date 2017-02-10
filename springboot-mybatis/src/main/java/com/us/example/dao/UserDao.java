@@ -6,5 +6,5 @@ import java.util.Map;
 import com.us.example.bean.User;
 
 public interface UserDao {
-    public List<User> getList(Map<String,Object> map);
+     List<User> getList(Map<String,Object> map);
 }

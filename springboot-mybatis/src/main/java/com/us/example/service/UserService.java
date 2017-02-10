@@ -15,7 +15,7 @@ public interface UserService {
      * @param map the map
      * @return the list
      */
-    public Object getList(Map<String, Object> map);
+    Object getList(Map<String, Object> map);
 
 
 }

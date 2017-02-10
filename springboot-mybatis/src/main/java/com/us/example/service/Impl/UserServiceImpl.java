@@ -1,4 +1,4 @@
-package com.us.example.serviceImpl;
+package com.us.example.service.Impl;
 
 
 import java.util.Map;
