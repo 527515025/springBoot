@@ -9,6 +9,10 @@
 
 是  博客 springBoot+springSecurity 数据库动态管理用户、角色、权限（二）   地址：http://blog.csdn.net/u012373815/article/details/54633046
 
+##springboot-SpringSecurity3
+
+是 博客  springBoot+springSecurity 动态管理Restful风格权限（三） 地址：http://blog.csdn.net/u012373815/article/details/55225079  
+
 ##springboot-WebSocket  
 包含三部分代码：
 
