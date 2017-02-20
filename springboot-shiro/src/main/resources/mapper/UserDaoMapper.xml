@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.us.dao.UserDao">
+    <resultMap id="userMap" type="com.us.bean.User">
+		<id property="id" column="id"/>
+		<result property="cnname" column="cnname"/>
+		<result property="username" column="username"/>
+		<result property="password" column="password"/>
+		<result property="email" column="email"/>
+		<result property="telephone" column="telephone"/>
+		<result property="mobilePhone" column="mobile_phone"/>
+		<result property="wechatId" column="wechat_id"/>
+		<result property="skill" column="skill"/>
+		<result property="departmentId" column="department_id"/>
+		<result property="loginCount" column="login_count"/>
+		<collection property="roles" ofType="com.us.bean.Role">
+			<result column="name" property="name"/>
+		</collection>
+    </resultMap>
+    
+    <sql id="queryCondition">
+        <where>
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+			<if test="cnname != null and cnname != ''">
+				and cnname = #{cnname}
+			</if>
+			<if test="username != null and username != ''">
+				and username = #{username}
+			</if>
+			<if test="password != null and password != ''">
+				and password = #{password}
+			</if>
+			<if test="email != null and email != ''">
+				and email = #{email}
+			</if>
+			<if test="telephone != null and telephone != ''">
+				and telephone = #{telephone}
+			</if>
+			<if test="mobilePhone != null and mobilePhone != ''">
+				and mobile_phone = #{mobilePhone}
+			</if>
+			<if test="wechatId != null and wechatId != ''">
+				and wechat_id = #{wechatId}
+			</if>
+			<if test="skill != null and skill != ''">
+				and skill = #{skill}
+			</if>
+			<if test="departmentId != null and departmentId != ''">
+				and department_id = #{departmentId}
+			</if>
+			<if test="loginCount != null and loginCount != ''">
+				and login_count = #{loginCount}
+			</if>
+			<if test="keywords != null and keywords != ''">
+				and (
+					cnname like CONCAT('%', #{keywords},'%')
+					OR username like CONCAT('%', #{keywords},'%')
+					OR telephone like CONCAT('%', #{keywords},'%')
+					OR mobile_phone like CONCAT('%', #{keywords},'%')
+					OR email like CONCAT('%', #{keywords},'%')
+					OR skill like CONCAT('%', #{keywords},'%')
+					OR wechat_id like CONCAT('%', #{keywords},'%')
+				)
+			</if>
+        </where>
+    </sql>
+    	
+    <select id="getByMap" parameterType="map" resultMap="userMap">
+    	SELECT * FROM user
+		<include refid="queryCondition" />
+    </select>
+    
+    <select id="getById" parameterType="int" resultMap="userMap">
+    	SELECT * FROM user WHERE id =#{id}
+    </select>
+
+	<select id="getByUserName" parameterType="String" resultMap="userMap">
+		select u.*
+		,r.name
+		from user u
+		LEFT JOIN user_role ur on u.id= ur.user_id
+		LEFT JOIN role r on ur.role_id=r.id
+		where username= #{username}
+	</select>
+
+	<insert id="create" parameterType="com.us.bean.User">
+        <selectKey resultType="int"  order="AFTER" keyProperty="id" >
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO user(
+			id,
+			cnname,
+			username,
+			password,
+			email,
+			telephone,
+			mobile_phone,
+			wechat_id,
+			skill,
+			department_id,
+			login_count
+		)VALUES(
+			#{id},
+			#{cnname},
+			#{username},
+			#{password},
+			#{email},
+			#{telephone},
+			#{mobilePhone},
+			#{wechatId},
+			#{skill},
+			#{departmentId},
+			#{loginCount}
+		)
+    </insert>
+    
+    <update id="update" parameterType="com.us.bean.User">
+		UPDATE user SET
+			cnname = #{cnname},
+			username = #{username},
+			password = #{password},
+			email = #{email},
+			telephone = #{telephone},
+			mobile_phone = #{mobilePhone},
+			wechat_id = #{wechatId},
+			skill = #{skill},
+			department_id = #{departmentId},
+			login_count = #{loginCount}
+		WHERE id = #{id}
+    </update>
+    
+    <delete id="delete" parameterType="int">
+    	DELETE FROM user WHERE id = #{id}
+    </delete>
+    
+</mapper>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.us.dao.EventDao">
+    <resultMap id="eventMap" type="com.us.bean.Event">
+		<id property="id" column="id"/>
+		<result property="rawEventId" column="raw_event_id"/>
+		<result property="host" column="host"/>
+		<result property="ip" column="ip"/>
+		<result property="source" column="source"/>
+		<result property="type" column="type"/>
+		<result property="startTime" column="start_time"/>
+		<result property="endTime" column="end_time"/>
+		<result property="content" column="content"/>
+		<result property="dataType" column="data_type"/>
+		<result property="suggest" column="suggest"/>
+		<result property="businessSystemId" column="business_system_id"/>
+		<result property="departmentId" column="department_id"/>
+		<result property="status" column="status"/>
+		<result property="occurCount" column="occur_count"/>
+		<result property="owner" column="owner"/>
+		<result property="responsedTime" column="responsed_time"/>
+		<result property="responsedBy" column="responsed_by"/>
+		<result property="resolvedTime" column="resolved_time"/>
+		<result property="resolvedBy" column="resolved_by"/>
+		<result property="closedTime" column="closed_time"/>
+		<result property="closedBy" column="closed_by"/>
+
+    </resultMap>
+    
+    <sql id="queryCondition">
+        <where>
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+			<if test="rawEventId != null and rawEventId != ''">
+				and raw_event_id = #{rawEventId}
+			</if>
+			<if test="host != null and host != ''">
+				and host = #{host}
+			</if>
+			<if test="ip != null and ip != ''">
+				and ip = #{ip}
+			</if>
+			<if test="source != null and source != ''">
+				and source = #{source}
+			</if>
+			<if test="type != null and type != ''">
+				and type = #{type}
+			</if>
+			<if test="startTime != null and startTime != ''">
+				and start_time = #{startTime}
+			</if>
+			<if test="endTime != null and endTime != ''">
+				and end_time = #{endTime}
+			</if>
+			<if test="content != null and content != ''">
+				and content = #{content}
+			</if>
+			<if test="dataType != null and dataType != ''">
+				and data_type = #{dataType}
+			</if>
+			<if test="suggest != null and suggest != ''">
+				and suggest = #{suggest}
+			</if>
+			<if test="businessSystemId != null and businessSystemId != ''">
+				and business_system_id = #{businessSystemId}
+			</if>
+			<if test="departmentId != null and departmentId != ''">
+				and department_id = #{departmentId}
+			</if>
+			<if test="status != null and status != ''">
+				and status = #{status}
+			</if>
+			<if test="occurCount != null and occurCount != ''">
+				and occur_count = #{occurCount}
+			</if>
+			<if test="owner != null and owner != ''">
+				and owner = #{owner}
+			</if>
+			<if test="responsedTime != null and responsedTime != ''">
+				and responsed_time = #{responsedTime}
+			</if>
+			<if test="responsedBy != null and responsedBy != ''">
+				and responsed_by = #{responsedBy}
+			</if>
+			<if test="resolvedTime != null and resolvedTime != ''">
+				and resolved_time = #{resolvedTime}
+			</if>
+			<if test="resolvedBy != null and resolvedBy != ''">
+				and resolved_by = #{resolvedBy}
+			</if>
+			<if test="closedTime != null and closedTime != ''">
+				and closed_time = #{closedTime}
+			</if>
+			<if test="closedBy != null and closedBy != ''">
+				and closed_by = #{closedBy}
+			</if>
+			<if test="keywords != null and keywords != ''">
+				and (
+				host like CONCAT('%', #{keywords},'%')
+				OR ip like CONCAT('%', #{keywords},'%')
+				OR source like CONCAT('%', #{keywords},'%')
+				OR type like CONCAT('%', #{keywords},'%')
+				OR content like CONCAT('%', #{keywords},'%')
+				OR suggest like CONCAT('%', #{keywords},'%')
+				OR status like CONCAT('%', #{keywords},'%')
+				OR owner like CONCAT('%', #{keywords},'%')
+				OR responsed_by like CONCAT('%', #{keywords},'%')
+				OR resolved_by like CONCAT('%', #{keywords},'%')
+				OR closed_by like CONCAT('%', #{keywords},'%')
+				)
+			</if>
+        </where>
+    </sql>
+    	
+    <select id="getByMap" parameterType="map" resultMap="eventMap">
+    	SELECT * FROM event
+		<include refid="queryCondition" />
+    </select>
+    
+    <select id="getById" parameterType="int" resultMap="eventMap">
+    	SELECT * FROM event WHERE id =#{id}
+    </select>
+
+    <insert id="create" parameterType="com.us.bean.Event">
+        <selectKey resultType="int"  order="AFTER" keyProperty="id" >
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO event(
+			id,
+			raw_event_id,
+			host,
+			ip,
+			source,
+			type,
+			start_time,
+			end_time,
+			content,
+			data_type,
+			suggest,
+			business_system_id,
+			department_id,
+			status,
+			occur_count,
+			owner,
+			responsed_time,
+			responsed_by,
+			resolved_time,
+			resolved_by,
+			closed_time,
+			closed_by
+		)VALUES(
+			#{id},
+			#{rawEventId},
+			#{host},
+			#{ip},
+			#{source},
+			#{type},
+			#{startTime},
+			#{endTime},
+			#{content},
+			#{dataType},
+			#{suggest},
+			#{businessSystemId},
+			#{departmentId},
+			#{status},
+			#{occurCount},
+			#{owner},
+			#{responsedTime},
+			#{responsedBy},
+			#{resolvedTime},
+			#{resolvedBy},
+			#{closedTime},
+			#{closedBy}
+		)
+    </insert>
+    
+    <update id="update" parameterType="com.us.bean.Event">
+		UPDATE event SET
+			raw_event_id = #{rawEventId},
+			host = #{host},
+			ip = #{ip},
+			source = #{source},
+			type = #{type},
+			start_time = #{startTime},
+			end_time = #{endTime},
+			content = #{content},
+			data_type = #{dataType},
+			suggest = #{suggest},
+			business_system_id = #{businessSystemId},
+			department_id = #{departmentId},
+			status = #{status},
+			occur_count = #{occurCount},
+			owner = #{owner},
+			responsed_time = #{responsedTime},
+			responsed_by = #{responsedBy},
+			resolved_time = #{resolvedTime},
+			resolved_by = #{resolvedBy},
+			closed_time = #{closedTime},
+			closed_by = #{closedBy}
+		WHERE id = #{id}
+    </update>
+    
+    <delete id="delete" parameterType="int">
+    	DELETE FROM event WHERE id = #{id}
+    </delete>
+    
+</mapper>

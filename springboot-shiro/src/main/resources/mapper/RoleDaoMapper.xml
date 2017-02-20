@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.us.dao.RoleDao">
+    <resultMap id="roleMap" type="com.us.bean.Role">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="roleLevel" column="role_level"/>
+		<result property="description" column="description"/>
+
+    </resultMap>
+    
+    <sql id="queryCondition">
+        <where>
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+			<if test="name != null and name != ''">
+				and name = #{name}
+			</if>
+			<if test="roleLevel != null and roleLevel != ''">
+				and role_level = #{roleLevel}
+			</if>
+			<if test="description != null and description != ''">
+				and description = #{description}
+			</if>
+
+        </where>
+    </sql>
+    	
+    <select id="getByMap" parameterType="map" resultMap="roleMap">
+    	SELECT * FROM role
+		<include refid="queryCondition" />
+    </select>
+    
+    <select id="getById" parameterType="int" resultMap="roleMap">
+    	SELECT * FROM role WHERE id =#{id}
+    </select>
+    
+    <insert id="create" parameterType="com.us.bean.Role">
+        <selectKey resultType="int"  order="AFTER" keyProperty="id" >
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO role(
+			id,
+			name,
+			role_level,
+			description
+		)VALUES(
+			#{id},
+			#{name},
+			#{roleLevel},
+			#{description}
+		)
+    </insert>
+    
+    <update id="update" parameterType="com.us.bean.Role">
+		UPDATE role SET
+			name = #{name},
+			role_level = #{roleLevel},
+			description = #{description}
+		WHERE id = #{id}
+    </update>
+    
+    <delete id="delete" parameterType="int">
+    	DELETE FROM role WHERE id = #{id}
+    </delete>
+    
+</mapper>
