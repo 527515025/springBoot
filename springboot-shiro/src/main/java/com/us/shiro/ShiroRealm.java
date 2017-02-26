@@ -1,4 +1,4 @@
-package com.us.shiro2;
+package com.us.shiro;
 
 import com.us.bean.Permission;
 import com.us.bean.Role;
