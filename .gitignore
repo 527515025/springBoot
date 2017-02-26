@@ -17,4 +17,5 @@
 .idea
 .class
 *.class
+*.log
 !application.properties

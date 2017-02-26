@@ -48,7 +48,8 @@ public class ShiroConfiguration {
         return credentialsMatcher;
     }
 
-    /**ShiroRealm，这是个自定义的认证类，继承自AuthorizingRealm，
+    /**
+     * ShiroRealm，这是个自定义的认证类，继承自AuthorizingRealm，
      * 负责用户的认证和权限的处理，可以参考JdbcRealm的实现。
      */
     @Bean(name = "shiroRealm")
@@ -71,7 +72,8 @@ public class ShiroConfiguration {
 
     /**
      * SecurityManager，权限管理，这个类组合了登陆，登出，权限，session的处理，是个比较重要的类。
-//     */
+     * //
+     */
     @Bean(name = "securityManager")
     public DefaultWebSecurityManager securityManager() {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
@@ -99,6 +101,7 @@ public class ShiroConfiguration {
         filterChainDefinitionManager.put("/logout", "logout");
         filterChainDefinitionManager.put("/user/**", "authc,roles[ROLE_USER]");
         filterChainDefinitionManager.put("/events/**", "authc,roles[ROLE_ADMIN]");
+//        filterChainDefinitionManager.put("/user/edit/**", "authc,perms[user:edit]");// 这里为了测试，固定写死的值，也可以从数据库或其他配置中读取
         filterChainDefinitionManager.put("/**", "anon");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionManager);
 

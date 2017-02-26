@@ -31,5 +31,8 @@
 
 第二部分是 博客 springboot缓存篇（二）－redis 做缓存 地址：http://blog.csdn.net/u012373815/article/details/54572687
 
+##springboot-shiro
+
+是博客  springboot集成shiro 实现权限控制   地址：http://blog.csdn.net/u012373815/article/details/57532292
 
 ##未完待续。。。
