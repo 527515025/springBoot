@@ -19,7 +19,7 @@ public class HomeController {
         return "getUsers";
     }
 
-    @Secured("ROLE_ADMIN")
+    @Secured({"ROLE_ADMIN","ROLE_USER"})
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public String save() {
