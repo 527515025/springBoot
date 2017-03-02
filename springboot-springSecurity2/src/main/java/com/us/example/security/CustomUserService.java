@@ -3,6 +3,7 @@ package com.us.example.security;
 import com.us.example.dao.UserDao;
 import com.us.example.domain.SysRole;
 import com.us.example.domain.SysUser;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,6 +22,7 @@ public class CustomUserService implements UserDetailsService { //自定义UserDe
 
     @Autowired
     UserDao userDao;
+    private static final org.slf4j.Logger logger = LoggerFactory.getLogger(CustomUserService.class);
 
     @Override
     public UserDetails loadUserByUsername(String username) { //重写loadUserByUsername 方法获得 userdetails 类型用户
@@ -34,11 +36,10 @@ public class CustomUserService implements UserDetailsService { //自定义UserDe
         for(SysRole role:user.getRoles())
         {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
-            System.out.println(role.getName());
+            logger.info("loadUserByUsername: " + user);
         }
-        return new org.springframework.security.core.userdetails.User(user.getUsername(),
-                user.getPassword(), authorities);
-
+        user.setGrantedAuthorities(authorities); //用于登录时 @AuthenticationPrincipal 标签取值
+        return user;
     }
 
 }
