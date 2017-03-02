@@ -1,7 +1,12 @@
 package com.us.example.controller;
 
+import com.us.example.dao.UserDao;
+import com.us.example.domain.SysUser;
+import com.us.example.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/users")
 public class HomeController {
+    @Autowired
+    UserService userService;
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
@@ -22,8 +29,8 @@ public class HomeController {
     @Secured({"ROLE_ADMIN","ROLE_USER"})
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    public String save() {
-        return "saveUser";
+    public Object save(@RequestBody SysUser user) {
+        return  userService.create(user);
     }
 
 

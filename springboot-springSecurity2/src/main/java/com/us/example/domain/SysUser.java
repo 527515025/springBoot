@@ -16,6 +16,8 @@ public class SysUser implements UserDetails {  // implements UserDetails 用于�
     private String username;
     @JsonIgnore
     private String password;
+    private String rawPassword;
+    @JsonIgnore
     private List<SysRole> roles;
     private List<? extends GrantedAuthority> authorities;
 
@@ -52,16 +54,27 @@ public class SysUser implements UserDetails {  // implements UserDetails 用于�
         this.roles = roles;
     }
 
+    public String getRawPassword() {
+        return rawPassword;
+    }
+
+    public void setRawPassword(String rawPassword) {
+        this.rawPassword = rawPassword;
+    }
+
+
     @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
+
     @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
+
     @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
@@ -74,11 +87,13 @@ public class SysUser implements UserDetails {  // implements UserDetails 用于�
     public boolean isEnabled() {
         return true;
     }
+
     @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
     }
+
     public void setGrantedAuthorities(List<? extends GrantedAuthority> authorities) {
         this.authorities = authorities;
     }

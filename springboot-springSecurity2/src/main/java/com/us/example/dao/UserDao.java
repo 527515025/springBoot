@@ -4,5 +4,7 @@ import com.us.example.domain.SysUser;
 
 
 public interface UserDao {
-    public SysUser findByUserName(String username);
+     SysUser findByUserName(String username);
+
+     int create (SysUser sysUser);
 }

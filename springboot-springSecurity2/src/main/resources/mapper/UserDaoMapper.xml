@@ -18,4 +18,14 @@
         LEFT JOIN Sys_Role r on sru.Sys_Role_id=r.id
         where username= #{username}
 	</select>
+
+    <insert id="create" parameterType="com.us.example.domain.SysUser">
+        <selectKey resultType="int"  order="AFTER" keyProperty="id" >
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+       INSERT into Sys_User
+       (username,password)
+       values
+       (#{username},#{password})
+    </insert>
 </mapper>
