@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+    <!--切换为ehcache 缓存时使用-->
+<cache name="people" maxElementsInMemory="1000" />
+</ehcache>
