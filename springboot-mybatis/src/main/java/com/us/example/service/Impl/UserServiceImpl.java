@@ -1,8 +1,10 @@
 package com.us.example.service.Impl;
 
 
+import java.util.Date;
 import java.util.Map;
 
+import javafx.scene.input.DataFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -34,8 +36,9 @@ public class UserServiceImpl implements UserService {
     }
 
     //每一秒调用一次  -- 用于测试
-    @Scheduled(cron = "0/1 * *  * * ?")
+    @Scheduled(cron = "0/30 * * * * ?")
     public  void printName() {
+        System.out.println(new Date());
         System.out.println("my name is yang ");
     }
 
