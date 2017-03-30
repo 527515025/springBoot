@@ -17,5 +17,6 @@ public interface UserService {
      */
     Object getList(Map<String, Object> map);
 
+    void printName();
 
 }

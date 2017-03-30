@@ -4,6 +4,7 @@ package com.us.example.service.Impl;
 import java.util.Date;
 import java.util.Map;
 
+import com.jf.page.annotation.Page;
 import javafx.scene.input.DataFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -30,14 +31,16 @@ public class UserServiceImpl implements UserService {
      * @param map
      * @return
      */
+    @Page
+    @Override
     public Object getList(Map<String, Object> map) {
-        printName();
         return userDao.getList(map);
     }
 
     //每一秒调用一次  -- 用于测试
     @Scheduled(cron = "0/30 * * * * ?")
-    public  void printName() {
+    @Override
+    public void printName() {
         System.out.println(new Date());
         System.out.println("my name is yang ");
     }

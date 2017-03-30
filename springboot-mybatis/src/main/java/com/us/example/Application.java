@@ -9,7 +9,7 @@ import static org.springframework.boot.SpringApplication.*;
  * Created by yangyibo on 17/1/17.
  */
 
-@ComponentScan(basePackages ="com.us.example")
+@ComponentScan(basePackages ="com.us.example,com.jf")
 @SpringBootApplication
 @EnableScheduling
 public class Application {
