@@ -31,9 +31,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     		auth
                 .inMemoryAuthentication()
-                .withUser("wyf").password("wyf").roles("USER")
+                .withUser("admin").password("admin").roles("USER")
                 .and()
-                .withUser("wisely").password("wisely").roles("USER");
+                .withUser("abel").password("abel").roles("USER");
     }
     //5忽略静态资源的拦截
     @Override
