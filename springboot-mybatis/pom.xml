@@ -6,7 +6,8 @@
 
     <groupId>com.u</groupId>
     <artifactId>springboot-mybatis</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>v1</version>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -93,19 +94,23 @@
     </dependencies>
     <build>
         <plugins>
-            <!-- to generate compressed package（tar package） specified by package.xml begin -->
             <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.5.5</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
-                    <finalName>${package}-${package.version}</finalName>
-                    <ignorePermissions>true</ignorePermissions>
-                    <appendAssemblyId>false</appendAssemblyId>
-                    <descriptors>
-                        <descriptor>${basedir}/scripts/${package.format}/common/package.xml</descriptor>
-                    </descriptors>
+                    <mainClass>${start-class}</mainClass>
                 </configuration>
             </plugin>
+            <!-- to generate excutable jar/war with springboot style end -->
+
             <!-- to generate executable jar/war with standard style begin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -116,7 +121,7 @@
                             <mainClass>${start-class}</mainClass>
                         </manifest>
                     </archive>
-                    <webappDirectory>${project.build.directory}/epp-manager</webappDirectory>
+                    <webappDirectory>${project.build.directory}/springboot-mybatisma</webappDirectory>
                     <warSourceDirectory>src/main/webapp</warSourceDirectory>
                     <webResources>
                         <resource>
@@ -138,30 +143,73 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- to generate executable jar/war with standard style end -->
 
-            <!--test-->
+            <!-- to generate compressed package（tar package） specified by package.xml begin -->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.5.5</version>
+                <configuration>
+                    <finalName>${package}-${package.version}</finalName>
+                    <ignorePermissions>true</ignorePermissions>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptors>
+                        <descriptor>${basedir}/scripts/${package.format}/common/package.xml</descriptor>
+                    </descriptors>
+                </configuration>
+            </plugin>
+            <!-- to generate compressed package specified by package.xml end -->
+
+            <!-- resource插件, 设定编码，防止中文乱码 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <!--test plugin begin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                    <skip>true</skip>
+                    <!-- method level parallel -->
+                    <parallel>methods</parallel>
+                    <threadCount>10</threadCount>
+                    <argLine>-Dfile.encoding=UTF-8</argLine>
+                    <!-- if want junit test before packaging, set it to be false -->
+                    <!-- if the skipTests is false, and the junit test is wrong. The packaging will be stopped. -->
+                    <skipTests>true</skipTests>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
                 </configuration>
-            </plugin>
-
-            <!--打依赖包-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>2.3</version>
                 <executions>
                     <execution>
-                        <phase>package</phase>
+                        <id>default-test</id>
+                        <phase>test</phase>
                         <goals>
-                            <goal>shade</goal>
+                            <goal>test</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
+
+            <!--&lt;!&ndash;打依赖包&ndash;&gt;-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-shade-plugin</artifactId>-->
+                <!--<version>2.3</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>shade</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 </project>

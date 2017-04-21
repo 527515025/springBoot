@@ -1,0 +1,45 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3 
+  http://maven.apache.org/xsd/assembly-1.1.3.xsd">
+  
+    <id>0.1</id>
+    <formats>
+        <format>tar</format>
+    </formats>
+      
+    <fileSets>
+        <fileSet>
+            <directory>scripts/${package.format}/manager</directory>
+            <outputDirectory>/scripts</outputDirectory>
+            <fileMode>0755</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>scripts/${package.format}/common</directory>
+            <outputDirectory>/scripts</outputDirectory>
+            <fileMode>0755</fileMode>
+            <includes>
+              <include>install-cluster.sh</include>
+              <include>install-single.sh</include>
+              <include>install.sh</include>
+              <include>common-env.sh</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>env/${package.environment}</directory>
+            <outputDirectory>/env</outputDirectory>
+        </fileSet>
+    </fileSets>
+    
+     <files>
+		<file>
+			<source>target/${package}-${package.version}.image</source>
+			<outputDirectory>/</outputDirectory>
+			<destName>${package}-${package.version}.img.tar</destName>
+			<fileMode>0755</fileMode>
+		</file>
+	 </files>
+    
+    
+   
+</assembly>
