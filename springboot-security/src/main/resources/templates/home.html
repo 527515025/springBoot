@@ -24,7 +24,7 @@ body {
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
            <li><a th:href="@{/}"> 首页 </a></li>
-              <li><a th:href="@{/admin}"> admin </a></li>
+              <li><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}"> admin </a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
