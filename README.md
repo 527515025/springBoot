@@ -1,15 +1,15 @@
-##springboot-SpringSecurity  
+##springboot-SpringSecurity0  
 包含两部分代码：
 
 第一是  博客 springboot+mybatis＋SpringSecurity 实现用户角色数据库管理   地址：http://blog.csdn.net/u012373815/article/details/54632176
 
 第二是  博客 springBoot+springSecurity验证密码MD5加密  地址：http://blog.csdn.net/u012373815/article/details/54927070
 
-##springboot-Security  
+##springboot-SpringSecurity1  
 
 是  博客 springBoot+springSecurity 数据库动态管理用户、角色、权限（二）   地址：http://blog.csdn.net/u012373815/article/details/54633046
 
-##springboot-Security2
+##springboot-SpringSecurity2
 
 是  博客  springboot+security restful权限控制官方推荐（五）   地址：http://blog.csdn.net/u012373815/article/details/59749385
 
