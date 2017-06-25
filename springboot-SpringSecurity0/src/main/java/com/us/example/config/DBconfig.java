@@ -28,7 +28,6 @@ public class DBconfig {
         dataSource.setMaxIdleTime(300);
         dataSource.setAcquireIncrement(5);
         dataSource.setIdleConnectionTestPeriod(60);
-
         return dataSource;
     }
 }
