@@ -17,6 +17,8 @@
 ##springboot-SpringSecurity3
 
 是 博客  springBoot+springSecurity 动态管理Restful风格权限（三） 地址：http://blog.csdn.net/u012373815/article/details/55225079  
+##springboot-SpringSecurity4
+实战，项目中正在用
 
 ##springboot-WebSocket  
 包含三部分代码：
