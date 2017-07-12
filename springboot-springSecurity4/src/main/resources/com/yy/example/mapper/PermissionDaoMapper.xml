@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yy.example.dao.PermissionDao">
+    <resultMap id="permissionMap" type="com.yy.example.bean.Permission">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="permissionUrl" column="permission_url"/>
+		<result property="method" column="method"/>
+		<result property="description" column="description"/>
+
+    </resultMap>
+
+    <sql id="queryCondition">
+        <where>
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+			<if test="name != null and name != ''">
+				and name = #{name}
+			</if>
+			<if test="permissionUrl != null and permissionUrl != ''">
+				and permission_url = #{permissionUrl}
+			</if>
+			<if test="method != null and method != ''">
+				and method = #{method}
+			</if>
+			<if test="description != null and description != ''">
+				and description = #{description}
+			</if>
+
+        </where>
+    </sql>
+
+    <select id="getByMap" parameterType="map" resultMap="permissionMap">
+    	SELECT * FROM permission
+		<include refid="queryCondition" />
+    </select>
+
+    <select id="getById" parameterType="int" resultMap="permissionMap">
+    	SELECT * FROM permission WHERE id =#{id}
+    </select>
+
+	<select id="getList"  resultMap="permissionMap">
+		SELECT * from permission
+	</select>
+
+	<select id="getByUserId" parameterType="int" resultMap="permissionMap">
+		select p.*
+		from user u
+		LEFT JOIN user_role ur on u.id= ur.User_id
+		LEFT JOIN role r on ur.role_id=r.id
+		LEFT JOIN role_permission rp on rp.role_id=r.id
+		LEFT JOIN permission p on p.id =rp.permission_id
+		where u.id=#{userId}
+	</select>
+
+	<insert id="create" parameterType="com.yy.example.bean.Permission">
+        <selectKey resultType="int"  order="AFTER" keyProperty="id" >
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO permission(
+			id,
+			name,
+			permission_url,
+		    method,
+			description
+		)VALUES(
+			#{id},
+			#{name},
+			#{permissionUrl},
+		    #{method},
+			#{description}
+		)
+    </insert>
+
+    <update id="update" parameterType="com.yy.example.bean.Permission">
+		UPDATE permission SET
+			name = #{name},
+			permission_url = #{permissionUrl},
+			method = #{method},
+			description = #{description}
+		WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+    	DELETE FROM permission WHERE id = #{id}
+    </delete>
+
+</mapper>
