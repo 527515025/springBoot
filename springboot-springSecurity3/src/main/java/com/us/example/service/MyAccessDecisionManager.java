@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
-import java.util.Iterator;
 
 /**
  * Created by yangyibo on 17/1/19.
