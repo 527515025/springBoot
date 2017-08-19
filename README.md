@@ -12,6 +12,7 @@
 ##springboot-SpringSecurity2
 
 *  博客  springboot+security restful权限控制官方推荐（五）   地址：http://blog.csdn.net/u012373815/article/details/59749385
+*  博客：spring security 同时只有一个用户在线，session 并发问题 地址：
 
 ##springboot-SpringSecurity3
 
