@@ -26,6 +26,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
      private  CustomUserService customUserService;
+    @Autowired
+    SessionRegistry sessionRegistry;
 
     @Autowired
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -48,8 +50,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**")
                 .permitAll()
                 .and()
-                .sessionManagement().maximumSessions(1).maxSessionsPreventsLogin(true);
+                .sessionManagement().maximumSessions(1).maxSessionsPreventsLogin(true).sessionRegistry(sessionRegistry);
         http.httpBasic();
+    }
+
+    @Bean
+    public SessionRegistry getSessionRegistry(){
+        SessionRegistry sessionRegistry=new SessionRegistryImpl();
+        return sessionRegistry;
     }
 
     @Bean
