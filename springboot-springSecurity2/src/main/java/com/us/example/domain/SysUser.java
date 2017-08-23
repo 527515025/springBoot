@@ -97,19 +97,4 @@ public class SysUser implements UserDetails {  // implements UserDetails 用于�
     public void setGrantedAuthorities(List<? extends GrantedAuthority> authorities) {
         this.authorities = authorities;
     }
-
-    @Override
-    public String toString() {
-        return this.username;
-    }
-
-    @Override
-    public int hashCode() {
-        return username.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return this.toString().equals(obj.toString());
-    }
 }

@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**")
                 .permitAll()
                 .and()
-                .sessionManagement().maximumSessions(1).maxSessionsPreventsLogin(true).sessionRegistry(sessionRegistry);
+                .sessionManagement().maximumSessions(1).sessionRegistry(sessionRegistry);
         http.httpBasic();
     }
 
@@ -60,9 +60,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return sessionRegistry;
     }
 
-    @Bean
-    public ServletListenerRegistrationBean httpSessionEventPublisher() {
-        return new ServletListenerRegistrationBean(new HttpSessionEventPublisher());
-    }
 }
 
