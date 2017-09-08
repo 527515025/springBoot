@@ -97,4 +97,5 @@ public class SysUser implements UserDetails {  // implements UserDetails 用于�
     public void setGrantedAuthorities(List<? extends GrantedAuthority> authorities) {
         this.authorities = authorities;
     }
+
 }

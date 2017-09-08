@@ -2,8 +2,6 @@ package com.us.example.config;
 
 import com.us.example.security.CustomUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.embedded.ServletListenerRegistrationBean;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -11,10 +9,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.session.SessionRegistry;
-import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.session.HttpSessionEventPublisher;
 
 /**
  * Created by yangyibo on 17/1/18.
@@ -26,8 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
      private  CustomUserService customUserService;
-    @Autowired
-    SessionRegistry sessionRegistry;
+
 
     @Autowired
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -50,15 +44,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**")
                 .permitAll()
                 .and()
-                .sessionManagement().maximumSessions(1).sessionRegistry(sessionRegistry);
-        http.httpBasic();
+                .sessionManagement()
+                .and()
+                .httpBasic();
     }
 
-    @Bean
-    public SessionRegistry getSessionRegistry(){
-        SessionRegistry sessionRegistry=new SessionRegistryImpl();
-        return sessionRegistry;
-    }
+
 
 }
 
