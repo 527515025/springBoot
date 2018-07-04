@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: config #在Eureka server 注册的服务名为config
+  profiles:
+    active: native # 配置服务器使用本地配置（默认为git 配置）
+
+eureka:
+  instance:
+    non-secure-port: ${server.port:8888} #非ssl 端口，若环境变量中server.port有值，则使用环境变量的值，没有则使用8080
+    metadata-map:
+      instanceId: ${spring.application.name}:${random.value} #配置在Eureka server 的实例id
+  client:
+    service-url:
+      defaultZone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/ #Eureka 客户端设置的 Eureka server 地址

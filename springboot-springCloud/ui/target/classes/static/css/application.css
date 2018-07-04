@@ -1,0 +1,15 @@
+body {
+	padding-top: 60px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: microsoft yahei;
+}
+p, div {
+    font-family: microsoft yahei;
+    font-size: 12px;
+}
+
+.longtext {
+    word-break:break-all;
+}

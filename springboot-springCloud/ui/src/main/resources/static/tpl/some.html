@@ -1,0 +1,27 @@
+ <div class="row">
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>从 Some Service获得字符</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row" ng-if="errorMessage != ''">
+                    <div class="col-xs-12">
+                        <p class="bg-danger text-center">
+                            <span ng-bind="errorMessage"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-xs-12">
+            	<button type="button" class="btn btn-default" ng-click="getSome()">获取</button>
+            	<div>
+                 	<label>{{str}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
