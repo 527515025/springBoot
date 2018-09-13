@@ -117,7 +117,7 @@ public class UserController {
     }
 
     /**
-     * 同伙ID删除用户
+     * 通过ID删除用户
      * api :localhost:8099/users/2
      * @param id
      * @return
