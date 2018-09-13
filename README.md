@@ -49,4 +49,8 @@
 
 * 是博客  springboot集成shiro 实现权限控制   地址：http://blog.csdn.net/u012373815/article/details/57532292
 
+## springboot-swagger-ui
+* 博客 spring boot ＋Swagger-ui 自动生成API文档 地址： https://blog.csdn.net/u012373815/article/details/82685962
+
+
 ##未完待续。。。
