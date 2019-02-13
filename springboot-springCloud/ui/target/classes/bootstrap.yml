@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: ui
+
+eureka:
+  instance:
+    non-secure-port: ${server.port:80}
+  client:
+    service-url:
+      defaultZone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/

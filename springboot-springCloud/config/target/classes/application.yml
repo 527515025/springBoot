@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config #配置其他所需的配置文件的路径
+
+server:
+  port: 8888

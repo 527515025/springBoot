@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.yy.example.dao.UserDao">
+    <resultMap id="userMap" type="com.yy.example.bean.User">
+		<id property="id" column="id"/>
+		<result property="cnname" column="cnname"/>
+		<result property="username" column="username"/>
+		<result property="password" column="password"/>
+		<result property="email" column="email"/>
+		<result property="telephone" column="telephone"/>
+		<result property="mobilePhone" column="mobile_phone"/>
+    </resultMap>
+
+    
+    <sql id="queryCondition">
+        <where>
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+			<if test="cnname != null and cnname != ''">
+				and cnname = #{cnname}
+			</if>
+			<if test="username != null and username != ''">
+				and username = #{username}
+			</if>
+			<if test="password != null and password != ''">
+				and password = #{password}
+			</if>
+			<if test="email != null and email != ''">
+				and email = #{email}
+			</if>
+			<if test="telephone != null and telephone != ''">
+				and telephone = #{telephone}
+			</if>
+			<if test="mobilePhone != null and mobilePhone != ''">
+				and mobile_phone = #{mobilePhone}
+			</if>
+		</where>
+    </sql>
+    	
+    <select id="getByMap" parameterType="map" resultMap="userMap">
+    	SELECT u.* FROM user u
+		<include refid="queryCondition" />
+		ORDER  by id DESC 
+    </select>
+
+    
+    <select id="getById" parameterType="int" resultMap="userMap">
+    	SELECT * FROM user WHERE id =#{id}
+    </select>
+
+	<select id="getByUserName" parameterType="String" resultMap="userMap">
+		select u.* from user u
+		where username= #{username}
+	</select>
+
+	<insert id="create" parameterType="com.yy.example.bean.User">
+        <selectKey resultType="int"  order="AFTER" keyProperty="id" >
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO user(
+			id,
+			cnname,
+			username,
+			password,
+			email,
+			telephone,
+			mobile_phone,
+			wechat_id,
+			skill,
+			department_id,
+			login_count
+		)VALUES(
+			#{id},
+			#{cnname},
+			#{username},
+			#{password},
+			#{email},
+			#{telephone},
+			#{mobilePhone},
+			#{wechatId},
+			#{skill},
+			#{departmentId},
+			#{loginCount}
+		)
+    </insert>
+    
+    <update id="update" parameterType="com.yy.example.bean.User">
+		UPDATE user 
+		  <set>
+			<if test = "cnname != null and cnname != ''">	
+			cnname = #{cnname},
+			</if>
+			<if test = "password != null and password != ''">
+			password = #{password},
+			</if>
+			<if test="email != null and email != ''">
+			email = #{email},
+			</if>
+			<if test="telephone != null and telephone != ''">		
+			telephone = #{telephone},
+			</if>
+			<if test=" mobilePhone!= null and mobilePhone != ''">
+			mobile_phone = #{mobilePhone},
+			</if>
+		 </set>			
+		WHERE id = #{id}
+    </update>
+    
+    <delete id="delete" parameterType="int">
+    	DELETE FROM user WHERE id = #{id}
+    </delete>
+        
+</mapper>

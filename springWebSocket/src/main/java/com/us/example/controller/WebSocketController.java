@@ -73,6 +73,11 @@ public class WebSocketController {
             messagingTemplate.convertAndSendToUser("abel",
                     "/queue/notifications", principal.getName() + "-send:"
                             + message.getName());
+            /**
+             * 72 行操作相等于 
+             * messagingTemplate.convertAndSend("/user/abel/queue/notifications",principal.getName() + "-send:"
+             + message.getName());
+             */
         } else {
             messagingTemplate.convertAndSendToUser("admin",
                     "/queue/notifications", principal.getName() + "-send:"

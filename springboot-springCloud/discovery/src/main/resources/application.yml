@@ -1,0 +1,12 @@
+#云计算环境下习惯使用YAML 配置此处我们也是用YAML 配置
+server:
+  port: 8761
+
+eureka:
+  instance:
+      #当前Eureka Server 的hostname 为 localhost
+    hostname: localhost
+      #当前服务不需要到Eureka Server  上注册
+  client:
+    register-with-eureka: false
+    fetch-registry: false

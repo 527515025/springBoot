@@ -1,0 +1,3 @@
+spring:
+  jpa:
+    database: HSQL 
