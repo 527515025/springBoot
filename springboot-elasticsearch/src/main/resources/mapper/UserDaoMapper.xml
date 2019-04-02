@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="cn.abel.dao.UserDao">
+    <resultMap id="userMap" type="cn.abel.bean.User">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="address" column="address"/>
+		<result property="mobile" column="mobile"/>
+		<result property="email" column="email"/>
+		<result property="createTime" column="create_time"/>
+		<result property="role" column="role"/>
+
+    </resultMap>
+    
+    <sql id="queryCondition">
+        <where>
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+			<if test="name != null and name != ''">
+				and name = #{name}
+			</if>
+			<if test="address != null and address != ''">
+				and address = #{address}
+			</if>
+			<if test="mobile != null and mobile != ''">
+				and mobile = #{mobile}
+			</if>
+			<if test="email != null and email != ''">
+				and email = #{email}
+			</if>
+			<if test="role != null and role != ''">
+				and role = #{role}
+			</if>
+
+        </where>
+    </sql>
+    	
+    <select id="getByMap" parameterType="map" resultMap="userMap">
+    	SELECT * FROM user
+		<include refid="queryCondition" />
+    </select>
+    
+    <select id="getById" parameterType="int" resultMap="userMap">
+    	SELECT * FROM user WHERE id =#{id}
+    </select>
+    
+    <insert id="create" parameterType="cn.abel.bean.User">
+        <selectKey resultType="int"  order="AFTER" keyProperty="id" >
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO user(
+			id,
+			name,
+			address,
+			mobile,
+			email,
+			create_time,
+			role
+		)VALUES(
+			#{id},
+			#{name},
+			#{address},
+			#{mobile},
+			#{email},
+			NOW(),
+			#{role}
+		)
+    </insert>
+    
+    <update id="update" parameterType="cn.abel.bean.User">
+		UPDATE user SET
+			name = #{name},
+			address = #{address},
+			mobile = #{mobile},
+			email = #{email},
+			role = #{role}
+		WHERE id = #{id}
+    </update>
+    
+    <delete id="delete" parameterType="int">
+    	DELETE FROM user WHERE id = #{id}
+    </delete>
+    
+</mapper>
