@@ -12,7 +12,7 @@ public class Constants {
     public static final String ES_QUERY_JSON_PREFIX = "{\n" +
             "  \"query\": {\n" +
             "    \"term\": {\n" +
-            "      \"profileId\": {\n" +
+            "      \"userId\": {\n" +
             "        \"value\": \"";
     /**
      * es 查询query 拼接后缀
@@ -22,4 +22,12 @@ public class Constants {
             "    }\n" +
             "  }\n" +
             "}\n";
+
+    /**
+     * 需要查询的es的 index
+     */
+    public static final String ES_INDEX_PATH = "/logstash_indes/_search";
+
 }
+
+
