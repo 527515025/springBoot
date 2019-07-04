@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <contextName>middle_message</contextName>
+    <contextName>springboot-es</contextName>
 
     <!-- 控制台输入日志信息 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
