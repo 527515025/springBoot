@@ -1,3 +1,6 @@
+## 致歉
+由于自己懒以及身体对issuse 解决的不及时。请大家以后提issuse 的时候写清楚 模块名 比如“springboot-SpringSecurity4” 和问题，我会抽时间抓紧解决。
+
 ## springboot-SpringSecurity0  
 
 包含两部分代码：
@@ -45,12 +48,29 @@
 
 * 是  博客  springboot缓存 之 GuavaCacheManager   地址：http://blog.csdn.net/u012373815/article/details/60468033
 
+
+
 ## springboot-shiro
 
 * 是博客  springboot集成shiro 实现权限控制   地址：http://blog.csdn.net/u012373815/article/details/57532292
 
 ## springboot-swagger-ui
 * 博客 spring boot ＋Swagger-ui 自动生成API文档 地址： https://blog.csdn.net/u012373815/article/details/82685962
+
+## springBoot-Quartz
+* 博客 springBoot-Quartz 定时任务 地址： https://abelyang.blog.csdn.net/article/details/86740625
+
+## springboot 整合mybatis2
+* springboot 整合mybatis2 更简便的整合方式地址： https://abelyang.blog.csdn.net/article/details/89296273
+
+## springboot+Kafka
+* kafka 与 sprigboot 的结合，springboot 从Kafka中读取数据的小例子地址： https://abelyang.blog.csdn.net/article/details/89296305
+
+## springboot+es
+* Elasticsearch 与 sprigboot 的结合，springboot 操作es的小例子地址： https://abelyang.blog.csdn.net/article/details/89296320
+
+## Springboot多数据源切换
+* springboot 多个数据源的配置， 一个springboot 项目操作多个数据库的数据：https://abelyang.blog.csdn.net/article/details/89296341
 
 
 ##未完待续。。。
