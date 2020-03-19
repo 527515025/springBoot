@@ -59,10 +59,10 @@ public class DynamicDataSourceConfig {
 
     @Bean("dynamicDataSource")
     public DynamicDataSource dynamicDataSource(@Qualifier("primaryDataSource") DataSource primaryDataSource,
-                                               @Qualifier("userDataSource") DataSource miaoMoreDataSource) {
+                                               @Qualifier("userDataSource") DataSource userDataSource) {
         Map<Object, Object> targetDataSources = new HashMap<>();
         targetDataSources.put(DatabaseTypeEnum.PRIMARY, primaryDataSource);
-        targetDataSources.put(DatabaseTypeEnum.USER, miaoMoreDataSource);
+        targetDataSources.put(DatabaseTypeEnum.USER, userDataSource);
 
         DynamicDataSource dataSource = new DynamicDataSource();
         dataSource.setTargetDataSources(targetDataSources);// 该方法是AbstractRoutingDataSource的方法
