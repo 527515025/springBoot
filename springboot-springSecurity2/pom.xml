@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.us</groupId>
-    <artifactId>springboot-security</artifactId>
+    <artifactId>springboot-security2</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <parent>
