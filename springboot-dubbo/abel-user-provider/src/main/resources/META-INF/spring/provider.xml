@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <dubbo:application name="${dubbo.application.name}" owner="middle" organization="middle" logger="slf4j"/>
+    <dubbo:application name="${dubbo.application.name}" owner="abel" organization="abel" logger="slf4j"/>
 
     <dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}" file="false" client="curator"
                     group="${dubbo.registry.group}" version="${dubbo.registry.version}"/>
