@@ -54,6 +54,12 @@
 
 * 是博客  springboot集成shiro 实现权限控制   地址：http://blog.csdn.net/u012373815/article/details/57532292
 
+##springboot-shior2
+
+是使用shior 框架调取用户权限服务，进行登录权限验证的例子，其中的用户权限服务没有写，都是用TODO 标示出来了，使用时可以根据各自的用户权限服务进行编码替换
+
+springboot-shiro2 也是和dubbo 的结合例子是 消费者的示例。
+
 ## springboot-swagger-ui
 * 博客 spring boot ＋Swagger-ui 自动生成API文档 地址： https://blog.csdn.net/u012373815/article/details/82685962
 
@@ -71,6 +77,12 @@
 
 ## Springboot多数据源切换
 * springboot 多个数据源的配置， 一个springboot 项目操作多个数据库的数据：https://abelyang.blog.csdn.net/article/details/89296341
+
+##springboot-dubbo
+
+该项目是Springboot 和 dubbo 结合的例子，是provider 的示例，提供服务。简单的写了一些用户和权限的接口没有写的很完整，主要是为了提现dubbo 服务
+Springboot-shiro2 也是和dubbo 的结合例子是 消费者的示例。
+
 
 
 ##未完待续。。。

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="${dubbo.application.name}" owner="abel" organization="abel" logger="slf4j"/>
+
+    <dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}" file="false" client="curator"
+                    group="${dubbo.registry.group}" version="${dubbo.registry.version}"/>
+
+    <dubbo:annotation package="${dubbo.annotation.package}"/>
+
+    <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" accesslog="${dubbo.log.file}"/>
+
+    <dubbo:consumer check="false" loadbalance="roundrobin" retries="0" timeout="10000"/>
+
+
+
+    <dubbo:reference id="roleService" interface="cn.abel.user.service.UserService" protocol="dubbo"
+                     timeout="300000" check="false"/>
+
+</beans>
