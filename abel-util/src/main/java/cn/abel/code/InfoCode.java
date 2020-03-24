@@ -36,6 +36,8 @@ public enum InfoCode {
     ACCOUNT_SEARCH_FAIL(20037, "账号查询失败"),
     LOGIN_NAME_TYPE_ERROR(20038, "登录名不为空时，登录方式不能为空"),
     PASSWORD_SIMPLE_ERROR(20042, "密码错误，长度应为6-18，包含字母、数字和特殊字符"),
+    PASSWORD_ERROR_MORE_THAN(20043,"用户名密码连续错误已达5次，请15分钟后再试"),
+    LOGIN_TYPE_ERROR(20044, "不支持的登录类型"),
     SERVICE_UNAVAILABLE(50000, "操作失败，请重试");
 
     private int status;
