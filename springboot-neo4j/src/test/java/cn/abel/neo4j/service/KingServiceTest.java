@@ -4,6 +4,7 @@ import cn.abel.neo4j.BaseTest;
 import cn.abel.neo4j.bean.King;
 import cn.abel.neo4j.bean.Queen;
 import cn.abel.neo4j.dao.KingDao;
+import cn.abel.neo4j.dto.GraphDTO;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -44,4 +45,12 @@ public class KingServiceTest extends BaseTest {
         System.out.println();
 
     }
+
+    @Test
+    public void getKingAndQueen() throws Exception {
+        GraphDTO graphDTO = kingService.getKingAndQueen("朱棣");
+        System.out.println();
+
+    }
+
 }
