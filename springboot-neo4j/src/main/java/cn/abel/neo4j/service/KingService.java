@@ -64,6 +64,8 @@ public class KingService {
     public GraphDTO getKingAndQueen(String kingName) {
         Neo4jSession session = neo4jDao.open();
         String cypher = "match p=(a:King)-[r:`传位`]->(b:King)-[r2:`皇后`*1..]->(c:Queen) where a.name ='" + kingName + "' return p";
+//        通过皇帝名字查询到当前皇帝皇后以及上一任皇帝皇后
+//        match p=(a:King)-[r:`传位`]->(b:King)-[r2:`皇后`*1..]->(c:Queen), (a:King)-[r3:`皇后`*1..]->(d:Queen) where b.name ='朱棣' return a,b,c,d
         Iterator<Map<String, Object>> iterator = session.exec(cypher);
         GraphDTO gto = mapToGraph(iterator);
         return gto;
