@@ -11,6 +11,9 @@ public class User {
     private String email;
     private Date createTime;
     private Integer role;
+    private String idCard;
+    private int type;
+
 
     public Integer getId() {
         return id;
@@ -66,5 +69,21 @@ public class User {
 
     public void setRole(Integer role) {
         this.role = role;
+    }
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

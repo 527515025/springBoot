@@ -52,16 +52,11 @@
             <version>3.4</version>
         </dependency>
         <!--es-->
-        <dependency>
-            <groupId>com.sun.jna</groupId>
-            <artifactId>jna</artifactId>
-            <version>3.0.9</version>
-        </dependency>
 
         <dependency>
             <groupId>org.elasticsearch.client</groupId>
-            <artifactId>rest</artifactId>
-            <version>5.5.3</version>
+            <artifactId>elasticsearch-rest-client</artifactId>
+            <version>6.8.0</version>
         </dependency>
 
         <dependency>

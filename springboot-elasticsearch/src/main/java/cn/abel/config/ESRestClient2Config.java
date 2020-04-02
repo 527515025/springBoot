@@ -13,21 +13,21 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * 第一数据源
- * @author yangyibo
- * @time 2019/4/2
+ * 第二数据源
+ * @author yyb
+ * @time 2020/4/2
  */
 @Configuration
-public class ESRestClientConfig {
-    public static final String NAME = "ESRestClientConfig";
+public class ESRestClient2Config {
+    public static final String NAME = "ESRestClient2Config";
 
-    @Value("${elasticsearch.userName}")
+    @Value("${elasticsearch2.userName}")
     private String userName;
-    @Value("${elasticsearch.password}")
+    @Value("${elasticsearch2.password}")
     private String password;
-    @Value("${elasticsearch.rest.hostNames}")
+    @Value("${elasticsearch2.rest.hostNames}")
     private String hostName;
-    @Value("${elasticsearch.rest.port}")
+    @Value("${elasticsearch2.rest.port}")
     private Integer port;
 
     @Bean(name = NAME, destroyMethod = "close")
