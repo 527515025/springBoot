@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 配置消费者，生产者Spring通过properties 文件自动装配
  * Created by yyb on 2018/12/12.
  */
 @Configuration
@@ -24,7 +25,7 @@ public class KafkaConfig {
     /**
      * kafka地址
      */
-    @Value("${spring.kafka.bootstrap-servers}")
+    @Value("${test.kafka.bootstrap-servers}")
     private String bootstrapServers;
     /**
      * 默认组
@@ -52,6 +53,8 @@ public class KafkaConfig {
 
     @Value("${spring.kafka.consumer.auto-commit-interval}")
     private Integer commitInterval;
+
+
 
     @Bean(name = "kafkaListenerContainerFactory")
     public KafkaListenerContainerFactory<?> batchFactory() {
