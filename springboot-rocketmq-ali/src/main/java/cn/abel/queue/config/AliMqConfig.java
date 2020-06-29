@@ -12,7 +12,7 @@ import java.util.Properties;
  */
 @Component
 @ConfigurationProperties(prefix = "ali.rocket.mq")
-public class ALiMqConfig {
+public class AliMqConfig {
     private String accessKey;
     private String secretKey;
     private String nameSrvAddr;

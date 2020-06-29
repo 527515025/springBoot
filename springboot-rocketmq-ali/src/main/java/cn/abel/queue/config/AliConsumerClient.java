@@ -22,8 +22,8 @@ import java.util.Properties;
  */
 
 @Configuration
-public class ALiConsumerClient {
-    private static final Logger logger = LoggerFactory.getLogger(ALiConsumerClient.class);
+public class AliConsumerClient {
+    private static final Logger logger = LoggerFactory.getLogger(AliConsumerClient.class);
     /**
      * topic tag。
      */
@@ -73,7 +73,7 @@ public class ALiConsumerClient {
     }
 
     @Autowired
-    public ALiConsumerClient(MessageHandler handler) {
+    public AliConsumerClient(MessageHandler handler) {
         this.handler = handler;
     }
 }
