@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 import java.util.Properties;
 
 /**
+ * 此为内网 tcp 调用ali rocketMq
+ *  http 调用 参考  https://github.com/aliyunmq/mq-http-samples/blob/101-dev/java/src/main/java/Producer.java
  * @author yyb
  * @time 2020/3/25
  */
