@@ -10,19 +10,19 @@ import org.springframework.stereotype.Component;
  * @time 2020/3/25
  */
 @Component
-public class ALiProducerClient {
+public class AliProducerClient {
     @Autowired
-    private ALiMqConfig aLiMqConfig;
+    private AliMqConfig aliMqConfig;
 
     @Bean(name = "producer", initMethod = "start", destroyMethod = "shutdown")
     public ProducerBean build() {
         ProducerBean bean = new ProducerBean();
-        bean.setProperties(aLiMqConfig.getMqProperties());
+        bean.setProperties(aliMqConfig.getMqProperties());
         return bean;
     }
 
     @Autowired
-    public ALiProducerClient(ALiMqConfig aLiMqConfig) {
-        this.aLiMqConfig = aLiMqConfig;
+    public AliProducerClient(AliMqConfig aliMqConfig) {
+        this.aliMqConfig = aliMqConfig;
     }
 }

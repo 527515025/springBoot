@@ -41,6 +41,21 @@ public class WebSocketController {
     public String chat(){
         return  "chat";
     }
+
+
+    //TODO  springboot-WebSocket
+    // 第一是  博客 spring boot ＋WebSocket 广播式（一）地址：http://blog.csdn.net/u012373815/article/details/54375195  中所示代码
+    // 第二是  博客 spring boot ＋WebSocket 广播式（二）地址：http://blog.csdn.net/u012373815/article/details/54377937   中所示代码
+    // 第三是  博客 spring boot ＋WebSocket（三） 点对点式 地址： http://blog.csdn.net/u012373815/article/details/54380476  中所示代码
+
+
+    /**
+     * 广播式(一)：利用@SendTo注解实现
+     * 即服务器端有消息时，会将消息发送给所有链接了当前endpoint 的浏览器。也就是打开多个浏览器tab。链接上websocket 以后一个tab发送信息，其他链接的tab 也能收到。
+     * @param message
+     * @return
+     * @throws Exception
+     */
     //http://localhost:8080/ws
     @MessageMapping("/welcome")//浏览器发送请求通过@messageMapping 映射/welcome 这个地址。
     @SendTo("/topic/getResponse")//服务器端有消息时,会订阅@SendTo 中的路径的浏览器发送消息。
@@ -49,6 +64,11 @@ public class WebSocketController {
         return new Response("Welcome, " + message.getName() + "!");
     }
 
+    /**
+     * 广播式(二)：使用 spring 的SimpMessagingTemplate 类，实现广播式推送
+     * @return
+     * @throws Exception
+     */
     //http://localhost:8080/Welcome1
     @RequestMapping("/Welcome1")
     @ResponseBody
@@ -58,6 +78,13 @@ public class WebSocketController {
         return "is ok";
     }
 
+    /**
+     * （三） 点对点式
+     * 广播式有自己的应用场景，但是广播式不能解决我门一个常见的场景，即消息由谁发送、由谁接收的问题。
+     * 本例中演示了一个简单的聊天室程序。例子中只有两个用户，互相发送消息给彼此，因需要用户相关内容，所以这里引入了最简单的spring Security相关内容。
+     * @param principal
+     * @param message
+     */
     @MessageMapping("/chat")
     //在springmvc 中可以直接获得principal,principal 中包含当前用户的信息
     public void handleChat(Principal principal, Message message) {

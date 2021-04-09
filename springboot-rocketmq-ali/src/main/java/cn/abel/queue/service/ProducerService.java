@@ -1,6 +1,6 @@
 package cn.abel.queue.service;
 
-import cn.abel.queue.config.ALiMqConfig;
+import cn.abel.queue.config.AliMqConfig;
 import com.alibaba.fastjson.JSON;
 import com.aliyun.openservices.ons.api.Message;
 import com.aliyun.openservices.ons.api.OnExceptionContext;
@@ -26,7 +26,7 @@ public class ProducerService {
     private static final Logger logger = LoggerFactory.getLogger(ProducerService.class);
 
     @Autowired
-    private ALiMqConfig aLiMqConfig;
+    private AliMqConfig aliMqConfig;
     @Autowired
     private ProducerBean producer;
 
@@ -35,7 +35,7 @@ public class ProducerService {
      * 调用此方法 发送消息，o 为自定义的消息体
      */
     public void sendMessage(Object o) {
-        Message message = new Message(aLiMqConfig.getStockTopic(), "test", JSON.toJSON(o).toString().getBytes(StandardCharsets.UTF_8));
+        Message message = new Message(aliMqConfig.getTestTopic(), "test", JSON.toJSON(o).toString().getBytes(StandardCharsets.UTF_8));
         //向mq发送消息
         sendAsync(ProducerBean::isStarted, producer, message);
     }
