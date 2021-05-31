@@ -83,6 +83,6 @@ springboot-shiro2 也是和dubbo 的结合例子是 消费者的示例。
 该项目是Springboot 和 dubbo 结合的例子，是provider 的示例，提供服务。简单的写了一些用户和权限的接口没有写的很完整，主要是为了提现dubbo 服务
 Springboot-shiro2 也是和dubbo 的结合例子是 消费者的示例。
 
-
+i am from Mars, hello human
 
 ##未完待续。。。
